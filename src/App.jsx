@@ -13,7 +13,7 @@
  *   navbar shows "Online", "Offline", or "Degraded" in real-time.
  *   The status is polled every 30s (online) or 10s (offline).
  *
- * All 8 templates are loaded dynamically via React.lazy + code-splitting.
+ * All 17 templates are loaded dynamically via React.lazy + code-splitting.
  * The welcome page serves as the entry point where users browse templates,
  * chat with AI, and request customizations — all without signing in.
  *
@@ -43,6 +43,15 @@ const templates = {
   erp: lazy(() => import('../templates/erp/App.jsx')),
   social: lazy(() => import('../templates/social/App.jsx')),
   dashboard: lazy(() => import('../templates/dashboard/App.jsx')),
+  nutrition: lazy(() => import('../templates/nutrition/App.jsx')),
+  health: lazy(() => import('../templates/health/App.jsx')),
+  diet: lazy(() => import('../templates/diet/App.jsx')),
+  gym: lazy(() => import('../templates/gym/App.jsx')),
+  sports: lazy(() => import('../templates/sports/App.jsx')),
+  finance: lazy(() => import('../templates/finance/App.jsx')),
+  accounting: lazy(() => import('../templates/accounting/App.jsx')),
+  sales: lazy(() => import('../templates/sales/App.jsx')),
+  marketing: lazy(() => import('../templates/marketing/App.jsx')),
 }
 
 /* ------------------------------------------------------------------ */

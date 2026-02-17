@@ -55,6 +55,15 @@ import {
   XCircle,
   AlertTriangle,
   ChevronDown,
+  Apple,
+  HeartPulse,
+  Salad,
+  Dumbbell,
+  Trophy,
+  Landmark,
+  Calculator,
+  BadgeDollarSign,
+  Megaphone,
 } from 'lucide-react'
 
 /* ------------------------------------------------------------------ */
@@ -182,6 +191,141 @@ const TEMPLATES = [
     rating: 4.9,
     previews: 1740,
   },
+  {
+    id: 'nutrition',
+    name: 'Nutrition Tracker',
+    description: 'Comprehensive nutrition tracking with meal logging, calorie counter, macro breakdown, food database, and daily goals.',
+    category: 'health',
+    icon: Apple,
+    color: 'from-lime-500 to-green-600',
+    bgLight: 'bg-lime-50',
+    textColor: 'text-lime-700',
+    borderColor: 'border-lime-200',
+    tags: ['Meals', 'Calories', 'Macros', 'Food Log'],
+    isPremium: false,
+    rating: 4.8,
+    previews: 1920,
+  },
+  {
+    id: 'health',
+    name: 'Health Dashboard',
+    description: 'Personal health monitoring with vitals tracking, medication reminders, sleep analysis, heart rate, and wellness scores.',
+    category: 'health',
+    icon: HeartPulse,
+    color: 'from-red-500 to-rose-600',
+    bgLight: 'bg-red-50',
+    textColor: 'text-red-700',
+    borderColor: 'border-red-200',
+    tags: ['Vitals', 'Sleep', 'Heart Rate', 'Wellness'],
+    isPremium: true,
+    rating: 4.9,
+    previews: 2150,
+  },
+  {
+    id: 'diet',
+    name: 'Diet Planner',
+    description: 'Smart diet planning with weekly meal prep, recipe suggestions, grocery lists, dietary preferences, and progress charts.',
+    category: 'health',
+    icon: Salad,
+    color: 'from-emerald-500 to-green-600',
+    bgLight: 'bg-emerald-50',
+    textColor: 'text-emerald-700',
+    borderColor: 'border-emerald-200',
+    tags: ['Meal Plans', 'Recipes', 'Grocery', 'Progress'],
+    isPremium: false,
+    rating: 4.7,
+    previews: 1680,
+  },
+  {
+    id: 'gym',
+    name: 'Gym & Fitness',
+    description: 'Gym workout tracker with exercise library, custom routines, set/rep logging, progress photos, and personal records.',
+    category: 'health',
+    icon: Dumbbell,
+    color: 'from-orange-500 to-amber-600',
+    bgLight: 'bg-orange-50',
+    textColor: 'text-orange-700',
+    borderColor: 'border-orange-200',
+    tags: ['Workouts', 'Exercises', 'Progress', 'Routines'],
+    isPremium: false,
+    rating: 4.8,
+    previews: 2340,
+  },
+  {
+    id: 'sports',
+    name: 'Sports Hub',
+    description: 'Sports management platform with live scores, team rosters, match schedules, league standings, and player statistics.',
+    category: 'health',
+    icon: Trophy,
+    color: 'from-sky-500 to-blue-600',
+    bgLight: 'bg-sky-50',
+    textColor: 'text-sky-700',
+    borderColor: 'border-sky-200',
+    tags: ['Scores', 'Teams', 'Leagues', 'Stats'],
+    isPremium: true,
+    rating: 4.7,
+    previews: 1450,
+  },
+  {
+    id: 'finance',
+    name: 'Finance Dashboard',
+    description: 'Financial management with portfolio overview, income/expense tracking, budget planner, investments, and cash flow analysis.',
+    category: 'finance',
+    icon: Landmark,
+    color: 'from-teal-500 to-cyan-600',
+    bgLight: 'bg-teal-50',
+    textColor: 'text-teal-700',
+    borderColor: 'border-teal-200',
+    tags: ['Portfolio', 'Budget', 'Investments', 'Cash Flow'],
+    isPremium: true,
+    rating: 4.9,
+    previews: 2680,
+  },
+  {
+    id: 'accounting',
+    name: 'Accounting Suite',
+    description: 'Accounting platform with general ledger, invoicing, accounts payable/receivable, tax reports, and financial statements.',
+    category: 'finance',
+    icon: Calculator,
+    color: 'from-slate-500 to-zinc-600',
+    bgLight: 'bg-slate-50',
+    textColor: 'text-slate-700',
+    borderColor: 'border-slate-300',
+    tags: ['Ledger', 'Invoices', 'Tax', 'Statements'],
+    isPremium: true,
+    rating: 4.7,
+    previews: 1320,
+  },
+  {
+    id: 'sales',
+    name: 'Sales Pipeline',
+    description: 'Sales management with deal pipeline, lead tracking, revenue forecasting, team leaderboard, and activity timeline.',
+    category: 'finance',
+    icon: BadgeDollarSign,
+    color: 'from-green-500 to-emerald-600',
+    bgLight: 'bg-green-50',
+    textColor: 'text-green-700',
+    borderColor: 'border-green-200',
+    tags: ['Pipeline', 'Leads', 'Forecast', 'Deals'],
+    isPremium: false,
+    rating: 4.8,
+    previews: 1960,
+  },
+  {
+    id: 'marketing',
+    name: 'Marketing Hub',
+    description: 'Marketing dashboard with campaign analytics, email performance, social media metrics, SEO tracker, and content calendar.',
+    category: 'marketing',
+    icon: Megaphone,
+    color: 'from-fuchsia-500 to-pink-600',
+    bgLight: 'bg-fuchsia-50',
+    textColor: 'text-fuchsia-700',
+    borderColor: 'border-fuchsia-200',
+    tags: ['Campaigns', 'Email', 'SEO', 'Social'],
+    isPremium: false,
+    rating: 4.8,
+    previews: 2210,
+  },
 ]
 
 const CATEGORIES = [
@@ -192,6 +336,8 @@ const CATEGORIES = [
   { id: 'content', label: 'Content', icon: BookOpen },
   { id: 'business', label: 'Business', icon: BarChart3 },
   { id: 'social', label: 'Social', icon: MessageCircle },
+  { id: 'health', label: 'Health & Fitness', icon: HeartPulse },
+  { id: 'finance', label: 'Finance', icon: Landmark },
 ]
 
 const FEATURES = [
@@ -218,7 +364,7 @@ const FEATURES = [
 ]
 
 const STEPS = [
-  { step: '01', title: 'Browse Templates', description: 'Explore our curated collection of 8 production-ready templates.' },
+  { step: '01', title: 'Browse Templates', description: 'Explore our curated collection of 17 production-ready templates.' },
   { step: '02', title: 'Live Preview', description: 'Click any template to see it running live in your browser.' },
   { step: '03', title: 'Chat with AI', description: 'Tell our AI what you need — it recommends the perfect template.' },
   { step: '04', title: 'Request & Deploy', description: 'Submit a customization request and get your tailored template.' },
@@ -254,7 +400,7 @@ export default function WelcomePage() {
           <span className="inline-flex items-center gap-2">
             <Sparkles className="w-4 h-4" />
             <span className="font-medium">VA Studio v1.0</span>
-            <span className="hidden sm:inline">— 8 production-ready templates, zero login required.</span>
+            <span className="hidden sm:inline">— 17 production-ready templates, zero login required.</span>
             <a href="#templates" className="underline underline-offset-2 hover:text-indigo-200 ml-1">
               Explore now →
             </a>
@@ -342,7 +488,7 @@ export default function WelcomePage() {
             </h1>
 
             <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-              Browse 8 beautifully crafted React templates — from e-commerce to analytics dashboards.
+              Browse 17 beautifully crafted React templates — from e-commerce to finance & marketing.
               Preview live, chat with AI, and deploy your next project in minutes.
             </p>
 
@@ -367,7 +513,7 @@ export default function WelcomePage() {
             {/* Stats */}
             <div className="flex items-center justify-center gap-8 sm:gap-12 text-center">
               {[
-                { value: '8', label: 'Templates' },
+                { value: '17', label: 'Templates' },
                 { value: '100%', label: 'Free & Open' },
                 { value: '0', label: 'Login Required' },
                 { value: 'AI', label: 'Powered Chat' },
