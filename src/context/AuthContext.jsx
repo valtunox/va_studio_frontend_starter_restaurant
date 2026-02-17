@@ -1,6 +1,31 @@
 import { createContext, useContext, useState, useEffect, useCallback } from 'react'
 import { authApi } from '@/lib/api'
 
+const DEMO_CREDENTIALS = {
+  email: 'admin@example.com',
+  password: 'admin@1234',
+}
+
+const DEMO_USER = {
+  id: 'demo-admin',
+  email: DEMO_CREDENTIALS.email,
+  full_name: 'Admin User',
+  username: 'admin',
+  role: 'admin',
+}
+
+const DEMO_TOKENS = {
+  access: 'demo_access_token',
+  refresh: 'demo_refresh_token',
+}
+
+function simulateDemoAuth(setUser, setError) {
+  localStorage.setItem('access_token', DEMO_TOKENS.access)
+  localStorage.setItem('refresh_token', DEMO_TOKENS.refresh)
+  setUser(DEMO_USER)
+  setError?.(null)
+}
+
 const AuthContext = createContext(null)
 
 export function AuthProvider({ children }) {
@@ -43,6 +68,13 @@ export function AuthProvider({ children }) {
       await fetchUser()
       return { success: true }
     } catch (err) {
+      // Allow demo login when backend is unavailable
+      if (email === DEMO_CREDENTIALS.email && password === DEMO_CREDENTIALS.password) {
+        simulateDemoAuth(setUser, setError)
+        setLoading(false)
+        return { success: true, demo: true }
+      }
+
       const message = err.response?.data?.detail || 'Login failed'
       setError(message)
       return { success: false, error: message }
@@ -59,6 +91,13 @@ export function AuthProvider({ children }) {
       // Auto-login after registration
       return await login({ email, password })
     } catch (err) {
+      // Demo registration fallback for admin user
+      if (email === DEMO_CREDENTIALS.email && password === DEMO_CREDENTIALS.password) {
+        simulateDemoAuth(setUser, setError)
+        setLoading(false)
+        return { success: true, demo: true }
+      }
+
       const message = err.response?.data?.detail || 'Registration failed'
       setError(message)
       return { success: false, error: message }
