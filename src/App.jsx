@@ -31,6 +31,13 @@ import { BackendStatusProvider } from './context/BackendStatusContext'
 import WelcomePage from './pages/WelcomePage'
 
 /* ------------------------------------------------------------------ */
+/*  Lazy-loaded auth pages                                             */
+/* ------------------------------------------------------------------ */
+
+const LoginPage = lazy(() => import('./pages/auth/login/LoginPage.jsx'))
+const RegisterPage = lazy(() => import('./pages/auth/register/RegisterPage.jsx'))
+
+/* ------------------------------------------------------------------ */
 /*  Lazy-loaded template components (code-split per template)          */
 /* ------------------------------------------------------------------ */
 
@@ -119,6 +126,8 @@ function TemplatePreview() {
 const router = createBrowserRouter([
   { path: '/', element: <WelcomePage /> },
   { path: '/preview/:templateId', element: <TemplatePreview /> },
+  { path: '/auth/login', element: <Suspense fallback={<TemplateLoader />}><LoginPage /></Suspense> },
+  { path: '/auth/register', element: <Suspense fallback={<TemplateLoader />}><RegisterPage /></Suspense> },
 ])
 
 /**

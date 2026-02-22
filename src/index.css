@@ -60,6 +60,20 @@
   }
 }
 
+/* ── Animated Background Glow ───────────────────────────── */
+@keyframes bg-glow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.05); }
+}
+
+.bg-glow-slow {
+  animation: bg-glow 8s ease-in-out infinite;
+}
+
+.bg-glow-slower {
+  animation: bg-glow 12s ease-in-out infinite reverse;
+}
+
 /* ── Hero Rotating Text Animation ───────────────────────── */
 @keyframes hero-text-fade {
   0%, 20% { opacity: 1; transform: translateY(0); }
@@ -92,6 +106,23 @@
 .stat-animate.stat-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ── Hero Prompt Card Animated Glow Border ──────────────── */
+@keyframes prompt-glow-rotate {
+  0% { --prompt-angle: 0deg; }
+  100% { --prompt-angle: 360deg; }
+}
+
+@property --prompt-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.hero-prompt-glow {
+  background: conic-gradient(from var(--prompt-angle), #6366f1, #8b5cf6, #a78bfa, #c084fc, #8b5cf6, #6366f1);
+  animation: prompt-glow-rotate 4s linear infinite;
 }
 
 /* ── AI Thinking Loader ─────────────────────────────────── */
