@@ -2,11 +2,11 @@
 # For VM deploy only: frontend uses pre-pulled image (no build). Nginx builds from ./nginx.
 services:
   frontend:
-    container_name: studioapp-frontend
+    container_name: studioapp-frontend-business
     image: ${FRONTEND_IMAGE}
     restart: unless-stopped
     ports:
-      - "3008:3008"
+      - "3063:3063"
     deploy:
       resources:
         limits:
@@ -16,30 +16,30 @@ services:
           cpus: '0.5'
           memory: 512M
     healthcheck:
-      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://127.0.0.1:3008/health"]
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://127.0.0.1:3063/health"]
       interval: 30s
       timeout: 5s
       retries: 3
       start_period: 10s
     networks:
-      - studioapp-net
+      - studioapp-net-business
 
   nginx:
-    container_name: studioapp-nginx
-    image: ${NGINX_IMAGE:-studioapp-nginx:latest}
+    container_name: studioapp-nginx-business
+    image: ${NGINX_IMAGE:-studioapp-nginx-business:latest}
     restart: unless-stopped
     build:
       context: ./nginx
       dockerfile: Dockerfile
       args:
-        APP_PORT: 3008
+        APP_PORT: 3063
         HTTP_PORT: 80
     ports:
       - "80:80"
       - "443:443"
     environment:
-      - app_name=studioapp-frontend
-      - app_port=3008
+      - app_name=studioapp-frontend-business
+      - app_port=3063
     volumes:
       - ${SSL_CERTS_PATH:-./certs}:/etc/nginx/ssl:ro
     depends_on:
@@ -60,20 +60,20 @@ services:
       retries: 3
       start_period: 5s
     networks:
-      - studioapp-net
+      - studioapp-net-business
 
 networks:
-  studioapp-net:
+  studioapp-net-business:
     driver: bridge
 =======
 # For VM deploy only: frontend uses pre-pulled image (no build). Nginx builds from ./nginx.
 services:
   frontend:
-    container_name: studioapp-frontend
+    container_name: studioapp-frontend-business
     image: ${FRONTEND_IMAGE}
     restart: unless-stopped
     ports:
-      - "3008:3008"
+      - "3063:3063"
     deploy:
       resources:
         limits:
@@ -83,30 +83,30 @@ services:
           cpus: '0.5'
           memory: 512M
     healthcheck:
-      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://127.0.0.1:3008/health"]
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://127.0.0.1:3063/health"]
       interval: 30s
       timeout: 5s
       retries: 3
       start_period: 10s
     networks:
-      - studioapp-net
+      - studioapp-net-business
 
   nginx:
-    container_name: studioapp-nginx
-    image: ${NGINX_IMAGE:-studioapp-nginx:latest}
+    container_name: studioapp-nginx-business
+    image: ${NGINX_IMAGE:-studioapp-nginx-business:latest}
     restart: unless-stopped
     build:
       context: ./nginx
       dockerfile: Dockerfile
       args:
-        APP_PORT: 3008
+        APP_PORT: 3063
         HTTP_PORT: 80
     ports:
       - "80:80"
       - "443:443"
     environment:
-      - app_name=studioapp-frontend
-      - app_port=3008
+      - app_name=studioapp-frontend-business
+      - app_port=3063
     volumes:
       - ${SSL_CERTS_PATH:-./certs}:/etc/nginx/ssl:ro
     depends_on:
@@ -127,9 +127,9 @@ services:
       retries: 3
       start_period: 5s
     networks:
-      - studioapp-net
+      - studioapp-net-business
 
 networks:
-  studioapp-net:
+  studioapp-net-business:
     driver: bridge
 >>>>>>> 22b0267a21511be5230e2e8a7fbb8f3f2d788d52
